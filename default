@@ -23,8 +23,8 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 
-    location /data {
-        proxy_pass http://localhost:3000;
+    location = /data {
+        proxy_pass http://localhost:3000/data;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -35,6 +35,3 @@ server {
     
 }
 
-upstream node {
- server localhost:3000;
-}
